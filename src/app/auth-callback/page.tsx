@@ -43,4 +43,3 @@ const Page = () => {
 };
 
 export default Page;
-git remote add origin https://github.com/Mckennn/casecobra.git
