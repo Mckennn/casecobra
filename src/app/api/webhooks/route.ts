@@ -42,62 +42,6 @@ export async function POST(req: Request) {
       const billingAddress = session.customer_details!.address;
       const shippingAddress = session.shipping_details!.address;
 
-      await db.order.update({
-        where: {
-          id: orderId,
-        },
-        data: {
-          isPaid: true,
-          shippingAddress: {
-            create: {
-              name: session.shipping_details!.name!,
-              city: shippingAddress!.city!,
-              country: shippingAddress!.country!,
-              postalCode: shippingAddress!.postal_code!,
-              street: shippingAddress!.line1!,
-              state: shippingAddress!.state,
-            },
-          },
-          billingAddress: {
-            create: {
-              name: session.customer_details!.name!,
-              city: billingAddress!.city!,
-              country: billingAddress!.country!,
-              postalCode: billingAddress!.postal_code!,
-              street: billingAddress!.line1!,
-              state: billingAddress!.state,
-            },
-          },
-        },
-      });
-      await db.order.update({
-        where: {
-          id: orderId,
-        },
-        data: {
-          isPaid: true,
-          shippingAddress: {
-            create: {
-              name: session.shipping_details!.name!,
-              city: shippingAddress!.city!,
-              country: shippingAddress!.country!,
-              postalCode: shippingAddress!.postal_code!,
-              street: shippingAddress!.line1!,
-              state: shippingAddress!.state,
-            },
-          },
-          billingAddress: {
-            create: {
-              name: session.customer_details!.name!,
-              city: billingAddress!.city!,
-              country: billingAddress!.country!,
-              postalCode: billingAddress!.postal_code!,
-              street: billingAddress!.line1!,
-              state: billingAddress!.state,
-            },
-          },
-        },
-      });
       const updatedOrder = await db.order.update({
         where: {
           id: orderId,
@@ -106,7 +50,7 @@ export async function POST(req: Request) {
           isPaid: true,
           shippingAddress: {
             create: {
-              name: session.shipping_details!.name!,
+              name: session.customer_details!.name!,
               city: shippingAddress!.city!,
               country: shippingAddress!.country!,
               postalCode: shippingAddress!.postal_code!,
@@ -136,7 +80,7 @@ export async function POST(req: Request) {
           orderDate: updatedOrder.createdAt.toLocaleDateString(),
           // @ts-ignore
           shippingAddress: {
-            name: session.shipping_details!.name!,
+            name: session.customer_details!.name!,
             city: shippingAddress!.city!,
             country: shippingAddress!.country!,
             postalCode: shippingAddress!.postal_code!,
