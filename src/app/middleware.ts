@@ -6,30 +6,17 @@ export function middleware(req: NextRequest) {
 
   // Appliquer les en-têtes CORS uniquement aux requêtes de l'API
   if (req.nextUrl.pathname.startsWith("/api")) {
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://casecobra-three-hazel.vercel.app"
-    );
+    response.headers.set("Access-Control-Allow-Origin", "https://casecobra-three-hazel.vercel.app");
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    response.headers.set(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
-    );
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    response.headers.set("Access-Control-Allow-Credentials", "true"); // Ajout de cette ligne pour les cookies
 
     // Gérer les requêtes de pré-vol (OPTIONS)
     if (req.method === "OPTIONS") {
-      response.headers.set(
-        "Access-Control-Allow-Origin",
-        "https://casecobra-three-hazel.vercel.app"
-      );
-      response.headers.set(
-        "Access-Control-Allow-Methods",
-        "GET, POST, OPTIONS"
-      );
-      response.headers.set(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-      );
+      response.headers.set("Access-Control-Allow-Origin", "https://casecobra-three-hazel.vercel.app");
+      response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+      response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+      response.headers.set("Access-Control-Allow-Credentials", "true"); // Ajout de cette ligne pour les cookies
       response.headers.set("Access-Control-Max-Age", "86400"); // Cache preflight request for 1 day
       return new Response(null, {
         status: 204,
