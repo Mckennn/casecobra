@@ -68,6 +68,9 @@ importers:
       next:
         specifier: 14.2.6
         version: 14.2.6(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next-session:
+        specifier: ^4.0.5
+        version: 4.0.5
       prisma:
         specifier: ^5.19.0
         version: 5.19.0
@@ -1869,6 +1872,10 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
+  cookie@0.4.2:
+    resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
+    engines: {node: '>= 0.6'}
+
   cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
@@ -2709,6 +2716,10 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  next-session@4.0.5:
+    resolution: {integrity: sha512-GS1X2XJcoQlND8ldw4VfeZoK44i8p2tPpwhk6mLFga07A97AbvMIq1sKYHmCJHmdSuwKtCR2YKIK3j1mPM6s4g==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   next@14.2.6:
     resolution: {integrity: sha512-57Su7RqXs5CBKKKOagt8gPhMM3CpjgbeQhrtei2KLAA1vTNm7jfKS+uDARkSW8ZETUflDCBIsUKGSyQdRs4U4g==}
@@ -5439,6 +5450,8 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
+  cookie@0.4.2: {}
+
   cookie@0.6.0: {}
 
   core-js-compat@3.38.1:
@@ -6413,6 +6426,11 @@ snapshots:
   napi-build-utils@1.0.2: {}
 
   natural-compare@1.4.0: {}
+
+  next-session@4.0.5:
+    dependencies:
+      cookie: 0.4.2
+      nanoid: 3.3.7
 
   next@14.2.6(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
