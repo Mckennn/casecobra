@@ -1,32 +1,29 @@
-import { db } from "@/db";
-import { notFound } from "next/navigation";
-import DesignPreview from "./DesignPreview";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { db } from '@/db'
+import { notFound } from 'next/navigation'
+import DesignPreview from './DesignPreview'
 
 interface PageProps {
   searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
+    [key: string]: string | string[] | undefined
+  }
 }
 
 const Page = async ({ searchParams }: PageProps) => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  const { id } = searchParams;
+  const { id } = searchParams
 
-  if (!id || typeof id !== "string") {
-    return notFound();
+  if (!id || typeof id !== 'string') {
+    return notFound()
   }
 
   const configuration = await db.configuration.findUnique({
     where: { id },
-  });
+  })
 
-  if (!configuration) {
-    return notFound();
+  if(!configuration) {
+    return notFound()
   }
 
-  return <DesignPreview configuration={configuration} user={user!} />;
-};
+  return <DesignPreview configuration={configuration} />
+}
 
-export default Page;
+export default Page
